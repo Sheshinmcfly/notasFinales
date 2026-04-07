@@ -1,0 +1,178 @@
+<div class="container py-5">
+
+  <h1 class="mb-4 fw-bold">
+    <i class="bi bi-mortarboard-fill me-2"></i>Notas Finales
+  </h1>
+
+  <!-- Formulario -->
+  <form [formGroup]="form" (ngSubmit)="calcular()" *ngIf="!resultado">
+
+    <!-- Datos personales -->
+    <div class="card mb-4">
+      <div class="card-header fw-bold">Datos del estudiante</div>
+      <div class="card-body row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nombre y apellido</label>
+          <input formControlName="nombre" type="text" class="form-control"
+            [class.is-invalid]="isInvalid('nombre')" placeholder="Ej: Juan Pérez">
+          <div class="invalid-feedback">Campo requerido</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Carrera</label>
+          <input formControlName="carrera" type="text" class="form-control"
+            [class.is-invalid]="isInvalid('carrera')" placeholder="Ej: Ingeniería Informática">
+          <div class="invalid-feedback">Campo requerido</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ramo 1 -->
+    <div class="card mb-3">
+      <div class="card-header fw-bold">Ramo 1</div>
+      <div class="card-body row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Nombre del ramo</label>
+          <input formControlName="ramo1" type="text" class="form-control"
+            [class.is-invalid]="isInvalid('ramo1')" placeholder="Ej: Matemáticas">
+          <div class="invalid-feedback">Campo requerido</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 1</label>
+          <input formControlName="nota1_r1" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota1_r1')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 2</label>
+          <input formControlName="nota2_r1" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota2_r1')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 3</label>
+          <input formControlName="nota3_r1" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota3_r1')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ramo 2 -->
+    <div class="card mb-3">
+      <div class="card-header fw-bold">Ramo 2</div>
+      <div class="card-body row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Nombre del ramo</label>
+          <input formControlName="ramo2" type="text" class="form-control"
+            [class.is-invalid]="isInvalid('ramo2')" placeholder="Ej: Programación">
+          <div class="invalid-feedback">Campo requerido</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 1</label>
+          <input formControlName="nota1_r2" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota1_r2')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 2</label>
+          <input formControlName="nota2_r2" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota2_r2')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 3</label>
+          <input formControlName="nota3_r2" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota3_r2')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ramo 3 -->
+    <div class="card mb-4">
+      <div class="card-header fw-bold">
+        Ramo 3
+        <span class="text-muted fw-normal small ms-1">(calcula la nota necesaria para aprobar)</span>
+      </div>
+      <div class="card-body row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Nombre del ramo</label>
+          <input formControlName="ramo3" type="text" class="form-control"
+            [class.is-invalid]="isInvalid('ramo3')" placeholder="Ej: Base de Datos">
+          <div class="invalid-feedback">Campo requerido</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 1</label>
+          <input formControlName="nota1_r3" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota1_r3')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota 2</label>
+          <input formControlName="nota2_r3" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('nota2_r3')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Nota mínima para aprobar la carrera</label>
+          <input formControlName="notaAprobacionCarrera" type="number" class="form-control"
+            [class.is-invalid]="isInvalid('notaAprobacionCarrera')" min="1" max="7" step="0.1">
+          <div class="invalid-feedback">1.0 – 7.0</div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary px-4">
+      <i class="bi bi-calculator me-2"></i>Calcular
+    </button>
+
+  </form>
+
+  <!-- Resultado -->
+  <div *ngIf="resultado">
+
+    <div class="mb-3">
+      <p class="mb-1"><strong>Nombre:</strong> {{ resultado.nombre }}</p>
+      <p class="mb-0"><strong>Carrera:</strong> {{ resultado.carrera }}</p>
+    </div>
+
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Ramo</th>
+          <th>Nota 1</th>
+          <th>Nota 2</th>
+          <th>Nota 3</th>
+          <th>Promedio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ramo of resultado.ramos">
+          <td>{{ ramo.nombre }}</td>
+          <td>{{ ramo.nota1 }}</td>
+          <td>{{ ramo.nota2 }}</td>
+          <td>{{ ramo.nota3 }}</td>
+          <td>{{ ramo.promedio }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="resultado.yaReprobado" class="alert alert-danger">
+      <i class="bi bi-x-circle me-2"></i>
+      Con las notas actuales, <strong>ya no es posible aprobar la carrera con {{ resultado.notaAprobacionCarrera }}</strong>.
+      La nota necesaria en {{ resultado.ramoTres }} sería {{ resultado.notaNecesaria }}, lo que supera el máximo (7.0).
+    </div>
+
+    <div *ngIf="!resultado.yaReprobado" class="alert alert-success">
+      <i class="bi bi-check-circle me-2"></i>
+      Para aprobar la carrera con promedio <strong>{{ resultado.notaAprobacionCarrera }}</strong>,
+      necesitas obtener un <strong>{{ resultado.notaNecesaria }}</strong> en la nota 3 de <strong>{{ resultado.ramoTres }}</strong>.
+    </div>
+
+    <button (click)="limpiar()" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-counterclockwise me-2"></i>Nueva consulta
+    </button>
+
+  </div>
+
+</div>
