@@ -1,27 +1,42 @@
-# NotasTemp
+# Notas Finales
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+Calculadora académica que determina la nota necesaria en el examen final para aprobar la carrera.
 
-## Development server
+## Tecnologías
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 17 (standalone components)
+- Reactive Forms
+- Bootstrap 5.3
+- Bootstrap Icons 1.11
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Ingreso de datos del estudiante (nombre y carrera)
+- 3 ramos con sus notas:
+  - Ramos 1 y 2: 3 notas → calcula promedio
+  - Ramo 3: 2 notas → calcula la nota necesaria en el examen final
+- Calcula qué nota necesitas en la nota 3 del ramo 3 para que el **promedio general** alcance la nota de aprobación
+- Alerta verde si aún es posible aprobar
+- Alerta roja si ya no es posible aprobar la carrera
 
-## Build
+## Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+```
 
-## Running unit tests
+## Desarrollo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+ng serve
+```
 
-## Running end-to-end tests
+Abrir `http://localhost:4200`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Tests
 
-## Further help
+```bash
+ng test
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Cobertura: 100% (statements, branches, functions, lines)
